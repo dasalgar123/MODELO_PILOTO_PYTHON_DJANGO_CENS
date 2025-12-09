@@ -150,7 +150,31 @@ la_miel_mapping = {
     "25ºC_Max_tc34": "bs40",
     "20ºC_Max_tc34": "bs42",
 
-    "OBSERVACIONES_5_tc34": "am44"
+    "OBSERVACIONES_5_tc34": "am44",
+    
+    # PÁGINA 6: INTERRUPTOR DE 13.8KV IT20
+    "it_Conectores_i13": "k50",
+    "it_Conductores_eléctr_i13": "k51",
+    "it_Porcelana_i13": "k52",
+    "it_Sistema_mecánico_i13": "k53",
+    "it_Presión_de_SF6_i13": "k54",
+    "it_Manómetros_i13": "k55",
+    "it_Mangueras_presión_i13": "y50",
+    "it_Estructura_metálica_i13": "y51",
+    "it_Puesta_a_tierra_i13": "y52",
+    "it_Gabinete_de_control_i13": "y53",
+    "it_Borneras_i13": "y54",
+    "it_Cableado_i13": "y55",
+    "it_Breakers_i13": "ai50",
+    "it_Iluminación_i13": "ai51",
+    "it_DPS_i13": "ai52",
+    "it_Mandos_i13": "ai53",
+    "it_Calefacción_i13": "ai54",
+    "it_Limpieza_i13": "ai55",
+    "Presión_Nominal_psmi": "AW50",
+    "Presión_Leída_psmi": "AW52",
+    "Número Maniobras_interruptor_IT10_psmi": "AW54",
+    "OBSERVACIONES_6": "BB50"
 }
 
 def login_view(request):
