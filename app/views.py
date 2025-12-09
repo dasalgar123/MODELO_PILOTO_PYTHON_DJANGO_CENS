@@ -75,7 +75,40 @@ la_miel_mapping = {
     "it_Aisladores_SB12": "ae23",
     "it_Puesta_tierra_SB11": "aa24",
     "it_Puesta_tierras_SB12": "ae24",
-    "observaciones_3": "ai21"
+    "observaciones_3": "ai21",
+    
+    # PÁGINA 4: TRANSFORMADOR DE CORRIENTE E INTERRUPTOR 34.5KV IT10
+    "it_conectores_tc34": "h28",
+    "it_Porcelana_tc34": "h29",
+    "it_Caja_de_agrupamiento_tc34": "h30",
+    "it_Limpieza_tc34": "h31",
+    "it_Cableado_tc34": "h32",
+    "it_Puesta_tierra_tc34": "h33",
+
+    "it_conectores i34": "x28",
+    "it_Conductores_eléctr_i34": "x29",
+    "it_Porcelana_i34": "x30",
+    "it_Sistema_Mecánico_i34": "x31",
+    "it_PresionSF6_i34": "x32",
+    "it_Manometros_i34": "x33",
+
+    "it_Mangueras_presión_i34": "am28",
+    "it_Estructura_metálica_i34": "am29",
+    "it_Puesta_a_Tierra_i34": "am30",
+    "it_Gabinete_Control_i34": "am31",
+    "it_Borneras_i34": "am32",
+    "it_Cableado_i34": "am33",
+
+    "it_Breakers_i34": "bb28",
+    "it_Iluminación_i34": "bb29",
+    "it_DPS_i34": "bb30",
+    "it_Mandos_i34": "bb31",
+    "it_Calefaccion_i34": "bb32",
+    "it_Limpieza_i34": "bb33",
+    "presion_sf6_4_i34": "bp28",
+    "it_Presión_Leída_spmi34": "bp30",
+    "it_Número_Maniobras_interruptor IT10_spmi34": "bp32",
+    "observaciones_4": "am44"
 }
 
 def login_view(request):
@@ -94,6 +127,12 @@ def main_menu(request):
 
 def la_miel_list(request):
     if request.method == 'POST':
+        # DEBUG: Ver valores específicos
+        limpieza = request.POST.get('it_Limpieza_tc34')
+        cableado = request.POST.get('it_Cableado_tc34')
+        print(f"DEBUG - Limpieza tc34: '{limpieza}'")
+        print(f"DEBUG - Cableado tc34: '{cableado}'")
+        
         excel_template_path = "C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\PLT_201_MST_032_LA MIEL.xlsx"
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         new_excel_file_name = f"{timestamp}_S30_LAMIEL.xlsx"
