@@ -174,7 +174,18 @@ la_miel_mapping = {
     "Presión_Nominal_psmi": "AW50",
     "Presión_Leída_psmi": "AW52",
     "Número Maniobras_interruptor_IT10_psmi": "AW54",
-    "OBSERVACIONES_6": "BB50"
+    "OBSERVACIONES_6": "BB50",
+    
+    # PÁGINA 7: SECCIONADORES ASOCIADOS 13.8 KV
+    "it_Estado_sb21": "j59",
+    "it_Conectores_sb21": "j60",
+    "it_Porcelana_sb21": "j61",
+    "it_Mecanismo_sb21": "w59",
+    "it_Accionamiento_sb21": "w60",
+    "it_Gab_De_Control_sb21": "w61",
+    "it_Aisladores_sb21": "aj59",
+    "it_Puesta a tierra_sb21": "aj60",
+    "OBSERVACIONES_7_sb21": "an59"
 }
 
 def login_view(request):
