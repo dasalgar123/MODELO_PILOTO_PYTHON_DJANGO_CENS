@@ -1,0 +1,66 @@
+:root{  --cens-green: #006633;  --cens-green-light: #009933;  --cens-green-lime: #669900;  --epm-gray-dark: #666666;  --epm-gray-mid: #CCCCCC;  --epm-gray-light: #EDEDED;  --bg-light: #F7F7F7;  --text-dark: #222;}
+
+*{box-sizing:border-box}
+body{  margin:0;  font-family: "EPM Sans", Arial, sans-serif;  background:var(--bg-light);  color:var(--text-dark);  -webkit-font-smoothing:antialiased;  -moz-osx-font-smoothing:grayscale;}
+
+/* contenedor central */
+.app {  max-width:920px;  margin: 12px auto;  padding: 12px;}
+
+/* header */
+.header {  display:flex;  gap:12px;  align-items:center;  margin-bottom:10px;}
+.header .title {  flex:1;}
+.header h1{  margin:0;  font-size:18px;  color:var(--cens-green);}
+.header .subtitle { color:var(--epm-gray-dark); font-size:13px; margin-top:4px; }
+
+/* tarjeta / página */
+.page {  background:#fff;  border-radius:10px;  padding:14px;  box-shadow:0 2px 6px rgba(0,0,0,0.06);  margin-bottom:12px;  border-left:6px solid var(--cens-green-light);  display:none; /* se muestra la activa */}
+
+/* page header */
+.page h2{  margin:0 0 8px 0;  font-size:16px;  color:var(--cens-green);}
+.small { font-size:13px; color:var(--epm-gray-dark); margin-bottom:10px; }
+
+/* label y controles */
+.label-row{  display:flex;  justify-content:space-between;  gap:8px;  margin-bottom:8px;  align-items:center;}
+.label-row label{ font-weight:600; font-size:14px; color:var(--epm-gray-dark); min-width:30%; }
+.input {  flex:1;}
+input[type="text"], input[type="date"], select, textarea {  width:100%;  padding:10px;  border-radius:8px;  border:1px solid var(--epm-gray-mid);  font-size:15px;}
+textarea { min-height:80px; resize:vertical; }
+
+/* tablas adaptativas */
+.table {  width:100%;  border-collapse:collapse;  margin-top:8px;  margin-bottom:8px;}
+.table th {  text-align:left;  background:var(--cens-green-light);  padding:8px;  color:#fff;  font-size:13px;}
+.table td {  border:1px solid var(--epm-gray-mid);  padding:8px;  font-size:14px;  vertical-align:top;}
+
+/* nav botones */
+.pager {  display:flex;  gap:8px;  margin-top:10px;}
+.btn {  flex:1;  background:var(--cens-green);  color:#fff;  padding:12px;  border:none;  border-radius:8px;  font-weight:700;  font-size:15px;}
+.btn.secondary { background:var(--cens-green-light); }
+.btn.ghost { background:transparent; color:var(--cens-green); border:1px solid var(--cens-green); }
+
+/* small actions row */
+.actions-row { display:flex; gap:8px; margin-top:10px; }
+
+/* vista en móvil: cada campo en bloque se ve claro */
+@media (max-width:700px){
+  .label-row { flex-direction:column; align-items:flex-start; }
+  .label-row label { min-width:0; margin-bottom:6px; }
+  .header h1 { font-size:16px; }
+}
+
+/* imprimir: imprimir sólo la página activa */
+@media print {
+  body * { visibility: hidden; }
+  .page.active, .page.active * { visibility: visible; }
+  .page.active { position: absolute; left: 0; top: 0; width: 100%; }
+}
+
+.tabla-pdf { width: 100%; border-collapse: collapse; margin-top: 10px;font-size: 14px; }
+.tabla-pdf th, .tabla-pdf td {border: 2px solid #006633;padding: 6px; vertical-align: middle; }
+.titulo-verde { color: #006633; font-weight: 700; text-align: center; font-size: 15px;  }
+.col-titulo { background: #E4FFE4; font-weight: bold; color: #006633; }
+.selector { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid #ccc;  }
+.obs-input {width: 100%; padding: 8px; border-radius: 6px; border: 1px solid #ccc;  }
+@media(max-width:600px){
+  .tabla-pdf { font-size: 12px; }
+  .selector { font-size: 12px; padding:4px; }
+}

@@ -1,0 +1,19 @@
+{% extends 'subestacion/S30_LA_MIEL/s30_la_miel_base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Usuario:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password"><br><br>
+        <button type="submit">Entrar</button>
+        {% if error_message %}
+            <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+        <p>Para prueba: Usuario: <b>daniel</b>, Contraseña: <b>88310462</b></p>
+    </form>
+{% endblock %}

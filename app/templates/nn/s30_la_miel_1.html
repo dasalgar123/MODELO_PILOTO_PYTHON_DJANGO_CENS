@@ -1,0 +1,354 @@
+{% extends '../subestacion/S30_LA_MIEL/s30_la_miel_base.html' %}
+{% load static %}
+
+{% block title %}Planilla Registro - Subestación La Miel{% endblock %}
+
+
+{% block content %}
+	<link rel="stylesheet" href="{% static 'subestacion/stilo/s30_la_miel_inline.css' %}">
+<div class="container">
+	<h1>Planilla Registro - Subestación La Miel</h1>
+	<form method="post">
+		{% csrf_token %}
+		<p>Fecha: <input type="date" name="fecha"></p>
+		<p>Hora: <input type="time" name="hora"></p>
+		<p>Nombre del técnico: <input type="text" name="nombre_tecnico"></p>
+
+		<!-- ========== PÁGINA 1: DATOS GENERALES========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">1. DATOS GENERALES</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Subestación</td>
+				<td colspan="2">Código</td>
+				<td colspan="3">Nivel de Tensión</td>
+			</tr>
+			<tr>
+				<td>La Miel</td>
+				<td colspan="2"><input type="text" name="codigo"></td>
+				<td colspan="3"><input type="text" name="nivel_tension"></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 2: LLEGADA A SUBESTACIÓN========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">2. LLEGADA A SUBESTACIÓN</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Hora de llegada</td>
+				<td>Fecha de llegada</td>
+				<td colspan="4">Observaciones</td>
+			</tr>
+			<tr>
+				<td><input type="time" name="hora_llegada"></td>
+				<td><input type="date" name="fecha_llegada"></td>
+				<td colspan="4"><textarea name="observaciones_llegada"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 3: SALIDA DE SUBESTACIÓN========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">3. SALIDA DE SUBESTACIÓN</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Hora de salida</td>
+				<td>Fecha de salida</td>
+				<td colspan="4">Observaciones</td>
+			</tr>
+			<tr>
+				<td><input type="time" name="hora_salida"></td>
+				<td><input type="date" name="fecha_salida"></td>
+				<td colspan="4"><textarea name="observaciones_salida"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 4: ESTADO DE LA SUBESTACIÓN========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">4. ESTADO DE LA SUBESTACIÓN</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Aseo General</td>
+				<td><input type="checkbox" name="aseo_optimo"></td>
+				<td><input type="checkbox" name="aseo_regular"></td>
+				<td><input type="checkbox" name="aseo_critico"></td>
+				<td><input type="checkbox" name="aseo_na"></td>
+				<td><textarea name="observaciones_aseo"></textarea></td>
+			</tr>
+			<tr>
+				<td>Cercos y encerramientos</td>
+				<td><input type="checkbox" name="cercos_optimo"></td>
+				<td><input type="checkbox" name="cercos_regular"></td>
+				<td><input type="checkbox" name="cercos_critico"></td>
+				<td><input type="checkbox" name="cercos_na"></td>
+				<td><textarea name="observaciones_cercos"></textarea></td>
+			</tr>
+			<tr>
+				<td>Vías de acceso</td>
+				<td><input type="checkbox" name="vias_optimo"></td>
+				<td><input type="checkbox" name="vias_regular"></td>
+				<td><input type="checkbox" name="vias_critico"></td>
+				<td><input type="checkbox" name="vias_na"></td>
+				<td><textarea name="observaciones_vias"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 5: EQUIPOS Y APARATOS DE MANIOBRA========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">5. EQUIPOS Y APARATOS DE MANIOBRA</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Interruptores de Potencia</td>
+				<td><input type="checkbox" name="interruptores_optimo"></td>
+				<td><input type="checkbox" name="interruptores_regular"></td>
+				<td><input type="checkbox" name="interruptores_critico"></td>
+				<td><input type="checkbox" name="interruptores_na"></td>
+				<td><textarea name="observaciones_interruptores"></textarea></td>
+			</tr>
+			<tr>
+				<td>Cuchillas Seccionadoras</td>
+				<td><input type="checkbox" name="cuchillas_optimo"></td>
+				<td><input type="checkbox" name="cuchillas_regular"></td>
+				<td><input type="checkbox" name="cuchillas_critico"></td>
+				<td><input type="checkbox" name="cuchillas_na"></td>
+				<td><textarea name="observaciones_cuchillas"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 6: TRANSFORMADORES DE POTENCIA========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">6. TRANSFORMADORES DE POTENCIA</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Nivel de aceite</td>
+				<td><input type="checkbox" name="aceite_optimo"></td>
+				<td><input type="checkbox" name="aceite_regular"></td>
+				<td><input type="checkbox" name="aceite_critico"></td>
+				<td><input type="checkbox" name="aceite_na"></td>
+				<td><textarea name="observaciones_aceite"></textarea></td>
+			</tr>
+			<tr>
+				<td>Estado de las boquillas</td>
+				<td><input type="checkbox" name="boquillas_optimo"></td>
+				<td><input type="checkbox" name="boquillas_regular"></td>
+				<td><input type="checkbox" name="boquillas_critico"></td>
+				<td><input type="checkbox" name="boquillas_na"></td>
+				<td><textarea name="observaciones_boquillas"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 7: SISTEMAS DE PROTECCIÓN========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">7. SISTEMAS DE PROTECCIÓN</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Relés de protección</td>
+				<td><input type="checkbox" name="reles_optimo"></td>
+				<td><input type="checkbox" name="reles_regular"></td>
+				<td><input type="checkbox" name="reles_critico"></td>
+				<td><input type="checkbox" name="reles_na"></td>
+				<td><textarea name="observaciones_reles"></textarea></td>
+			</tr>
+			<tr>
+				<td>Pararrayos</td>
+				<td><input type="checkbox" name="pararrayos_optimo"></td>
+				<td><input type="checkbox" name="pararrayos_regular"></td>
+				<td><input type="checkbox" name="pararrayos_critico"></td>
+				<td><input type="checkbox" name="pararrayos_na"></td>
+				<td><textarea name="observaciones_pararrayos"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 8: BATERÍAS Y CARGADORES========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">8. BATERÍAS Y CARGADORES</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Nivel de electrolito</td>
+				<td><input type="checkbox" name="electrolito_optimo"></td>
+				<td><input type="checkbox" name="electrolito_regular"></td>
+				<td><input type="checkbox" name="electrolito_critico"></td>
+				<td><input type="checkbox" name="electrolito_na"></td>
+				<td><textarea name="observaciones_electrolito"></textarea></td>
+			</tr>
+			<tr>
+				<td>Voltaje de carga</td>
+				<td><input type="checkbox" name="voltaje_optimo"></td>
+				<td><input type="checkbox" name="voltaje_regular"></td>
+				<td><input type="checkbox" name="voltaje_critico"></td>
+				<td><input type="checkbox" name="voltaje_na"></td>
+				<td><textarea name="observaciones_voltaje"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 9: AIRE ACONDICIONADO========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">9. AIRE ACONDICIONADO</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Limpieza de filtros</td>
+				<td><input type="checkbox" name="filtros_optimo"></td>
+				<td><input type="checkbox" name="filtros_regular"></td>
+				<td><input type="checkbox" name="filtros_critico"></td>
+				<td><input type="checkbox" name="filtros_na"></td>
+				<td><textarea name="observaciones_filtros"></textarea></td>
+			</tr>
+			<tr>
+				<td>Funcionamiento general</td>
+				<td><input type="checkbox" name="funcionamiento_optimo"></td>
+				<td><input type="checkbox" name="funcionamiento_regular"></td>
+				<td><input type="checkbox" name="funcionamiento_critico"></td>
+				<td><input type="checkbox" name="funcionamiento_na"></td>
+				<td><textarea name="observaciones_funcionamiento"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 10: SISTEMA CONTRA INCENDIOS========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">10. SISTEMA CONTRA INCENDIOS</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptimo</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Detectores de humo</td>
+				<td><input type="checkbox" name="detectores_optimo"></td>
+				<td><input type="checkbox" name="detectores_regular"></td>
+				<td><input type="checkbox" name="detectores_critico"></td>
+				<td><input type="checkbox" name="detectores_na"></td>
+				<td><textarea name="observaciones_detectores"></textarea></td>
+			</tr>
+			<tr>
+				<td>Extintores</td>
+				<td><input type="checkbox" name="extintores_optimo"></td>
+				<td><input type="checkbox" name="extintores_regular"></td>
+				<td><input type="checkbox" name="extintores_critico"></td>
+				<td><input type="checkbox" name="extintores_na"></td>
+				<td><textarea name="observaciones_extintores"></textarea></td>
+			</tr>
+		</table>
+
+		<!-- ========== PÁGINA 11: INSTALACIONES/LOCATIVAS========= -->
+		<table class="tabla-pdf">
+			<tr class="header-row">
+				<td colspan="6">11. INSTALACIONES/LOCATIVAS</td>
+			</tr>
+			<tr class="sub-header-row">
+				<td>Ítem</td>
+				<td>Óptima</td>
+				<td>Regular</td>
+				<td>Crítico</td>
+				<td>N/A</td>
+				<td>Observaciones</td>
+			</tr>
+			<tr>
+				<td>Estructuras</td>
+				<td><input type="checkbox" name="estructuras_optimo"></td>
+				<td><input type="checkbox" name="estructuras_regular"></td>
+				<td><input type="checkbox" name="estructuras_critico"></td>
+				<td><input type="checkbox" name="estructuras_na"></td>
+				<td><textarea name="observaciones_estructuras"></textarea></td>
+			</tr>
+			<tr>
+				<td>Iluminación</td>
+				<td><input type="checkbox" name="iluminacion_optimo"></td>
+				<td><input type="checkbox" name="iluminacion_regular"></td>
+				<td><input type="checkbox" name="iluminacion_critico"></td>		<td><input type="checkbox" name="iluminacion_na"></td>
+				<td><textarea name="observaciones_iluminacion"></textarea></td>
+			</tr>
+			<tr>
+				<td>Ventilación</td>
+				<td><input type="checkbox" name="ventilacion_optimo"></td>
+				<td><input type="checkbox" name="ventilacion_regular"></td>
+				<td><input type="checkbox" name="ventilacion_critico"></td>
+				<td><input type="checkbox" name="ventilacion_na"></td>
+				<td><textarea name="observaciones_ventilacion"></textarea></td>
+			</tr>
+			<tr>
+				<td>Cámara Vigilancia</td>
+				<td><select name="it_Tanque Reconectador_R267" class="selector"  colspan"2"><option>--</option><option>✔</option></select></select></td>
+				<td class="col-titulo" colspan"1">Óptima</td>		<td><select name="it_Tanque Reconectador_R267" class="selector"  colspan"2"><option>--</option><option>✔</option></select></select></td>
+				<td class="col-titulo" colspan"1">Regular</td>
+				<td><select name="it_Tanque Reconectador_RC0196" class="selector"><option></option><option>✔</option></select></td>
+				<td><select name="it_Tanque Reconectador_RC0196" class="selector"><option></option><option>✔</option></select></td>
+			</tr>
+		</table>
+
+<table class="tabla-pdf"><!-- ========== PÁGINA 11:INSTALACIONES/LOCATIVAS========= -->
+	<h2>12. firmas </h2>
+	<label for="firm-img">Cargar Firma:</label><br>
+	<input type="file" id="firm-img" name="firm-img" accept="image/*"><br><br>
+	<h2>Revisado por:</h2>
+	
+	<h2>Aprobado por:</h2>
+	<label for="aprobado-img">Cargar Firma Aprobación:</label><br>
+	<input type="file" id="aprobado-img" name="aprobado-img" accept="image/*"><br><br>
+	
+</table>
+
+		<button type="submit">Guardar Registro</button>
+	</form>
+</div>
+{% endblock %}
