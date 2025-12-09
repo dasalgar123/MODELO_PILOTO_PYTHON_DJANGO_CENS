@@ -57,6 +57,9 @@ cell_mapping = {
     "id_Puesta_tierra_fase_b_tt": "p17",
     "id_Puesta_tierra_fase_c_tt": "v17",
     "id_Puesta_tierra_ft_dps": "an17",
+
+
+
     
     "observaciones_TT_Y_DPS": "an10",
     
@@ -64,7 +67,7 @@ cell_mapping = {
     # PÁGINA 3: SECCIONADORES ASOCIADOS 34.5 KV (SB11, SST12)
     # ============================================================================
     "it_Estado_SB11": "J21",            "it_Estado_SB12": "N21",
-                                        "it_Conectores_SB12": "N22",
+    "it_Conectores_SB11": "J22",        "it_Conectores_SB12": "N22",
     "it_Porcelana_SB11": "J23",         "it_Porcelana_SB12": "M23", 
     "it_Mecanismo_SB11": "j24",         "it_Mecanismo_SB12": "N24",
     "it_Gab_Control_SB11": "j25",       "it_Gab_Control_SB12": "N25",
