@@ -194,11 +194,13 @@ la_miel_mapping = {
     "it_Limpieza_fase_a_tc": "i67",
     "it_Cableado_fase_a_tc": "i68",
     "it_Puesta_a_tierra_fase_a_tc": "i69",
+
     "it_Conectores_fase_b_tc": "n64",
     "it_Porcelana_fase_b_tc": "n65",
     "it_Caja_de_agrup_fase_c_tc": "n66",
     "it_Limpieza_fase_b_tc": "n67",
     "it_Cableado_c_tc": "n68",
+
     "it_Puesta_a_tierra_c_tc": "n69",
     "it_Conectores_fase_c_tc": "s64",
     "it_Porcelana_fase_c_tc": "s65",
@@ -206,22 +208,58 @@ la_miel_mapping = {
     "it_Limpieza_fase_c_tc": "s67",
     "it_Cableado_fase_b_tc": "s68",
     "it_Puesta_a_tierra_fase_b_tc": "s69",
+
     "it_Conectores_fase_a_tt": "af64",
     "it_Porcelana_fase_a_tt": "af65",
     "it_Limpieza_fase_a_tt": "af66",
     "it_Cableado_fase_a_tt": "af67",
     "it_Puesta_a_tierra_fase_a_tt": "af68",
+
     "it_Conectores_fase_b_tt": "ak64",
     "it_Porcelana_fase_b_tt": "ak65",
     "it_Limpieza_fase_b_tt": "ak66",
     "it_Cableado_fase_b_tt": "ak67",
     "it_Puesta_a_tierra_fase_b_tt": "ak68",
+    
     "it_Conectores_fase_c_tt": "ap64",
     "it_Porcelana_fase_c_tt": "ap65",
     "it_Limpieza_fase_c_tt": "ap66",
     "it_Cableado_fase_c_tt": "ap67",
     "it_Puesta_a_tierra_fase_c_tt": "ap68",
-    "OBSERVACIONES_8": "au64"
+    
+    "OBSERVACIONES_8": "au64",
+    
+    # PÁGINA 9: RECONECTADORES SALIDA 13.8KV
+    "it_Tanque_Reconectador_R267": "R71",
+    "it_Conectores_y_bujes_de_entrada_R267": "R72",
+    "it_Conectores_y_bujes_de_salida_R267": "R73",
+    "it_Breaker_AC_Serv_Aux_R267": "R74",
+    "it_DPS_salida_Reconectador_R267": "R75",
+    "it_Sistema_de_puesta_a_tierra_R267": "R76",
+    "it_Número_Operaciones_R267": "R77",
+
+    "it_Tanque_Reconectador_RC0196": "W71",
+    "it_TConectores_y_bujes_de_entrada_RC0196": "W72",
+    "it_Conectores_y_bujes_de_salida_RC0196": "W73",
+    "it_DPS_salida_Reconectador_RC0196": "W74",
+    "it_Sistema_de_puesta_a_tierra_RC0196": "W75",
+    "it_Número_Operaciones_RC0196": "W76",
+
+    "it_Hermeticidad_control_R267": "AN71",
+    "it_Breaker_AC_ServAux_RC0196": "AN72",
+    "it_Breaker_Baterías_R267": "AN73",
+    "it_DPSVaristor_R267": "AN74",
+    "it_Limpieza_Gab_Control_R267": "AN75",
+    "it_Estructura_Soporte_R267": "AN76",
+
+    "it_Hermeticidad_control_RC0196": "AS71",
+    "it_Breaker_AC_ServAux_RC0196": "AS72",
+    "it_Breaker_Baterías_RC0196": "AS73",
+    "it_DPS_Varistor_RC0196": "AS74",
+    "it_Limpieza_Gab_Control_RC0196": "AS75",
+    "it_Estructura_Soporte_RC0196": "AS76",
+   
+    "OBSERVACIONES_9": "AX70"
 }
 
 def login_view(request):

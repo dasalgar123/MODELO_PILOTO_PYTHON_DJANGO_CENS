@@ -1,14 +1,54 @@
 :root{  --cens-green: #006633;  --cens-green-light: #009933;  --cens-green-medium: #669933;  --cens-green-lime: #99CC33;  --epm-gray-dark: #666666;  --epm-gray-mid: #CCCCCC;  --epm-gray-light: #EDEDED;  --bg-light: #F7F7F7;  --text-dark: #222;}
 
-.tabla-pdf { width: 100%; border-collapse: collapse; margin-top: 10px;font-size: 14px;  font-family: "EPM Sans", Arial, sans-serif; }
+.tabla-pdf { width: 100%; border-collapse: collapse; margin-top: 10px;font-size: 14px;  font-family: "EPM Sans", Arial, sans-serif; table-layout: auto; }
 .tabla-pdf th, .tabla-pdf td {border: 2px solid var(--cens-green);padding: 6px; vertical-align: middle; }
 .titulo-verde { color: var(--cens-green); font-weight: 700; text-align: center; font-size: 15px;  font-family: "EPM Rounded", Arial, sans-serif; }
 .col-titulo { background: #E4FFE4; font-weight: bold; color: var(--cens-green);  font-family: "EPM Rounded", Arial, sans-serif; }
-.selector { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid var(--epm-gray-mid);  font-family: "EPM Sans", Arial, sans-serif; }
+.selector { width: 100%; padding: 6px; border-radius: 6px; border: 1px solid var(--epm-gray-mid);  font-family: "EPM Sans", Arial, sans-serif; min-width: 60px; }
 .obs-input {width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--epm-gray-mid);  font-family: "EPM Sans", Arial, sans-serif; }
+
+
+/* Estilos específicos para PÁGINA 9 usando clase */
+.tabla-pagina-9 { table-layout: fixed; width: 100%; }
+.tabla-pagina-9 th:first-child,
+.tabla-pagina-9 td:first-child { width: 20%; min-width: 150px; max-width: 200px; }
+.tabla-pagina-9 th:nth-child(2),
+.tabla-pagina-9 td:nth-child(2) { width: 12%; min-width: 80px; max-width: 100px; }
+.tabla-pagina-9 th:nth-child(3),
+.tabla-pagina-9 td:nth-child(3) { width: 12%; min-width: 80px; max-width: 100px; }
+.tabla-pagina-9 th:nth-child(4),
+.tabla-pagina-9 td:nth-child(4) { width: 20%; min-width: 150px; max-width: 200px; }
+.tabla-pagina-9 th:nth-child(5),
+.tabla-pagina-9 td:nth-child(5) { width: 12%; min-width: 80px; max-width: 100px; }
+.tabla-pagina-9 th:nth-child(6),
+.tabla-pagina-9 td:nth-child(6) { width: 12%; min-width: 80px; max-width: 100px; }
+.tabla-pagina-9 th:nth-child(7),
+.tabla-pagina-9 td:nth-child(7) { width: 12%; min-width: 100px; max-width: 150px; }
+.tabla-pagina-9 .selector { min-width: 70px; font-size: 13px; padding: 5px 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tabla-pagina-9 .col-titulo { font-size: 12px; padding: 5px 3px; text-align: center; }
+
+/* Estilos específicos para PÁGINA 10 usando clase */
+.tabla-pagina-10 { table-layout: fixed; width: 100%; }
+.tabla-pagina-10 th:first-child,
+.tabla-pagina-10 td:first-child { width: 12%; min-width: 120px; max-width: 150px; }
+.tabla-pagina-10 th:nth-child(n+2):nth-child(-n+16),
+.tabla-pagina-10 td:nth-child(n+2):nth-child(-n+16) { width: 5.2%; min-width: 50px; max-width: 65px; }
+.tabla-pagina-10 th:nth-child(17),
+.tabla-pagina-10 td:nth-child(17) { width: 10%; min-width: 90px; max-width: 120px; }
+.tabla-pagina-10 th:nth-child(18),
+.tabla-pagina-10 td:nth-child(18) { width: 7%; min-width: 65px; max-width: 85px; }
+.tabla-pagina-10 th:nth-child(19),
+.tabla-pagina-10 td:nth-child(19) { width: 7%; min-width: 65px; max-width: 85px; }
+.tabla-pagina-10 .selector { min-width: 45px; font-size: 12px; padding: 4px 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tabla-pagina-10 .col-titulo { font-size: 11px; padding: 4px 2px; text-align: center; }
+
 @media(max-width:600px){
   .tabla-pdf { font-size: 12px; }
-  .selector { font-size: 12px; padding:4px; }
+  .selector { font-size: 12px; padding:4px; min-width: 50px; }
   .titulo-verde { font-size: 13px; }
+  .tabla-pagina-9 .selector { font-size: 11px; padding: 3px; min-width: 60px; }
+  .tabla-pagina-9 .col-titulo { font-size: 11px; padding: 4px 2px; }
+  .tabla-pagina-10 .selector { font-size: 10px; padding: 2px; min-width: 40px; }
+  .tabla-pagina-10 .col-titulo { font-size: 10px; padding: 3px 1px; }
 }
 
