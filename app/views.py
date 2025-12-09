@@ -105,10 +105,52 @@ la_miel_mapping = {
     "it_Mandos_i34": "bb31",
     "it_Calefaccion_i34": "bb32",
     "it_Limpieza_i34": "bb33",
+
     "presion_sf6_4_i34": "bp28",
     "it_Presión_Leída_spmi34": "bp30",
     "it_Número_Maniobras_interruptor IT10_spmi34": "bp32",
-    "observaciones_4": "am44"
+
+    "observaciones_4": "am44",
+    
+    # PÁGINA 5: TRANSFORMADOR 34.5/13.8kV
+    "it_Conductores_primarios tc34": "m36",
+    "it_Conectores_tc34": "m37",
+    "it_Bujes_primarios_tc34": "m38",
+    "it_Bujes_secundarios_tc34": "m39",
+    "it_Silica_gel_tc34": "m40",
+    "it_Termómetro_del_aceite tc34": "m41",
+    "it_Termómetro_devanado_tc34": "m42",
+    "it_Conduct_secundarios_tc34": "m43",
+
+    "it_Gabinete_de_control_tc34": "af36",
+    "it_Breaker_tc34": "af37",
+    "it_Bornera_tc34": "af38",
+    "it_Cableado_tc34": "af39",
+    "it_Iluminación_tc34": "af40",
+    "it_Limpieza_tc34": "af41",
+    "it_Mandos_tc34": "af42",
+    "it_DPS_tc34": "af43",
+    
+    "FASE_R_PRIM_CD": "ar37",
+    "FASE R SECUND_CD": "aw37",
+    "FASE_S_PRIM_CD_tc34": "ar38",
+    "FASE_S_SECUND_CD_tc34": "aw38",
+    "FASE_T_PRIM_CD": "aw39",
+    "FASE_T_SECUND_CD": "aw39",
+    
+    "it_Aceite_tc34": "am42",
+    "it_AT_tc34": "ar42",
+    "it_Bt_tc34": "aw42",
+
+    "Estado_silica_gel_tc34": "bb37",
+    "Color_actual_del_GEL_tc34": "bg38",
+    "it_Posición_conmutador_tc34": "bb42",
+
+    "80ºC_Max_tc34": "bs38",
+    "25ºC_Max_tc34": "bs40",
+    "20ºC_Max_tc34": "bs42",
+
+    "OBSERVACIONES_5_tc34": "am44"
 }
 
 def login_view(request):
