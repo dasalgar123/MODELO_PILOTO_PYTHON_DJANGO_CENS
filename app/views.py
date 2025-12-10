@@ -831,6 +831,9 @@ la_miel_mapping = {
     # Ver: FORMULARIOS_CONFIG['s30_la_miel']['firma_celda'] = 'K96'
 }
 
+# Mapeo: Encabezado + PÁGINA 2 - FORMULARIO S_XX_ZULIA (copia independiente de S30)
+zulia_mapping = la_miel_mapping.copy()
+
 # ============================================================================
 # CONFIGURACIÓN DE FORMULARIOS
 # ============================================================================
@@ -849,6 +852,14 @@ FORMULARIOS_CONFIG = {
         'excel_template': 'C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\PLT_201_MST_032_LA MIEL.xlsx',
         'excel_sheet': 'PLT_201_MST_032_ACT',
         'file_prefix': 'S30_LAMIEL',
+        'firma_celda': 'K96',
+    },
+    's_xx_zulia': {
+        'mapping': zulia_mapping,
+        'template': 'subestacion/S_XX_ZULIA/s_xx_zulia.html',
+        'excel_template': 'C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\PLT_201_MST_022_EL ZULIA.xlsx',
+        'excel_sheet': 'PLT_201_MST_022',
+        'file_prefix': 'S_XX_ZULIA',
         'firma_celda': 'K96',
     },
     's01': S01_CONFIG,
@@ -1156,3 +1167,7 @@ def la_miel_list(request):
 def s01_list(request):
     """Vista específica para el formulario S01"""
     return procesar_formulario(request, 's01')
+
+def zulia_list(request):
+    """Vista específica para el formulario S_XX_ZULIA"""
+    return procesar_formulario(request, 's_xx_zulia')

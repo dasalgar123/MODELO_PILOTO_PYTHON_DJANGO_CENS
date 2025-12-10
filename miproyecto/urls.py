@@ -24,4 +24,8 @@ urlpatterns = [
     path('app/', include('app.urls')),
 ]
 
-# Servir archivos estáticos en desarrollo (Django ya lo hace automáticamente con staticfiles)
+# Servir archivos estáticos y media en desarrollo
+if settings.DEBUG:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

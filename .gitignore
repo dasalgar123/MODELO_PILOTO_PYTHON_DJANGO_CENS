@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# Entorno virtual
+venv/
+env/
+ENV/
+miproyecto/venv/
+
+# Archivos Excel guardados
+EXCEL_GUARDADOS/
+*.xlsx
+!app/templates/EXEL/*.xlsx
+
+# Archivos subidos (firmas y fotos)
+firmas/
+registro fotografico/
+
+# Archivos temporales
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de sistema
+*.bak
+*.cache
+
+# Archivos de consultas/temporales
+miproyecto/consultas/*.xlsx
+miproyecto/consultas/*.txt
+
+# Archivos de imágenes de tema (opcional, descomentar si no quieres subirlos)
+# tema colores/
+

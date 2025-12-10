@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Planilla Registro - Subestación La Miel (Paginado)</title>
+<title>Planilla Registro - Subestación Zulia (Paginado)</title>
 
 <!-- ======= CSS (mobile-first, paleta institucional EPM/CENS) ======= -->
 {% load static %}
@@ -35,312 +35,319 @@
   <form id="planillaForm" autocomplete="off" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     
-  {% include 'componetes/encabezado/encabezado.html' %}
+  {% include 'subestacion/S_XX_ZULIA/encabezado/encabezado.html' %}
 
 <table class="tabla-pdf"><!-- ========== PÁGINA 2: NIVEL 13.8kV — TRANSFORMADORES DE TENSIÓN  CONT. DESC. DPS F========= -->
-	<h2>2. NIVEL 13.8kV — TRANSFORMADORES DE TENSIÓN Y DPS 34.5 KV</h2>
+	<h2>2. NIVEL 13.8kV</h2>
 	<tr><!-- Encabezado PÁGINA 2-->
-		<th colspan="5" class="titulo-verde">TRANSFORMADORES DE TENSIÓN</th>
-		<th colspan="9" class="titulo-verde">CONT. DESC. DPS FP</th>
+		<th colspan="2" class="titulo-verde">RECONECTADOR DE ENTRADA  34.5 KV RC3-11 </th>
+		<th colspan="4" class="titulo-verde">TRANSFORMADORES DE CORRIENTE  34.5 KV RC3-11</th>
+		<th colspan="4" class="titulo-verde">TRANSFORMADORES DE TENSIÓN   34.5 KV RC3-11</th>
 	</tr>
   
-	<tr><!-- FILA 1 PÁGINA 2-->
-		<td class="col-titulo">DETALLE</td>
-		<td class="col-titulo">FASE A</td>
-		<td class="col-titulo">FASE B</td>
-		<td class="col-titulo">FASE C</td>
-		
-		<td class="col-titulo">FP</td>
-		<td class="col-titulo">FASE R</td>
-		<td><div class="input"><textarea id="id_tt_fase_r_cdd" name="id_tt_fase_r_cdd"></textarea></div></td>
-		<td class="col-titulo">FASE S</td>
-		<td><div class="input"><textarea id="id_tt_fase_s_cdd" name="id_tt_fase_s_cdd"></textarea></div></td>
-		<td class="col-titulo">FASE T</td>	
-		<td><div class="input"><textarea id="id__tt_fase_t" name="id_tt_fase_t_cdd"></textarea></div></td>
-	</tr>
 	<tr><!-- FILA 2 PÁGINA 2-->
-		<td class="col-titulo">Conectores</td>
-		<td><select id="id_conectores_fase_a_tt" name="id_conectores_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_conectores_fase_b_tt" name="id_conectores_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_conectores_fase_c_tt" name="id_conectores_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_conectores_ft_dps" name="id_conectores_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo" colspan="2">observaciones </td>
-		<td><input type="text" id="observaciones_TT_Y_DPS" name="observaciones_TT_Y_DPS" " colspan="6"></td>
+		<td class="col-titulo">ELEMENTO</td>
+		<td class="col-titulo">ESTADO</td>
+		<td class="col-titulo">ELEMENTO</td>
+		<td class="col-titulo" colspan="3 ">ESTADO</td>
+		<td class="col-titulo">ELEMENTO</td>
+		<td class="col-titulo" colspan="3 ">ESTADO</td>
+		
 	</tr>
+
 	<tr><!-- FILA 3 PÁGINA 2-->
-		<td class="col-titulo">Porcelana</td>
-		<td><select id="id_porcelana_fase_a_tt" name="id_porcelana_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_porcelana_fase_b_tt" name="id_porcelana_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_porcelana_fase_c_tt" name="id_porcelana_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_porcelana_fase_ft_dps" name="id_porcelana_fase_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo"></td>
+		<td class="col-titulo"></td>
+		<td class="col-titulo"></td>
+		<td class="col-titulo" colspan="1">Fase R</td>
+		<td class="col-titulo" colspan="1">Fase S</td>
+		<td class="col-titulo" colspan="1">Fase T</td>
+
+		<td class="col-titulo"></td>
+		<td class="col-titulo" colspan="1">Fase R</td>
+		<td class="col-titulo" colspan="1">Fase S</td>
+		<td class="col-titulo" colspan="1">Fase T</td>
+		
 	</tr>
 	<tr><!-- FILA 4 PÁGINA 2-->
-		<td class="col-titulo">Caja de agrupamiento</td>
-		<td><select id="id_Caja_agrupamiento_fase_a_tt" name="id_Caja_agrupamiento_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Caja_agrupamiento_fase_b_tt" name="id_Caja_agrupamiento_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Caja_agrupamiento_fase_c_tt" name="id_Caja_agrupamiento_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Caja_agrupamiento_fase_ft_dps" name="id_Caja_agrupamiento_fase_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
+		<td class="col-titulo">Estado Físico Tanque</td>
+		<td><select id="id_Estado_Físico_Tanque_fase_a_rc" name="id_Estado_Físico Tanque_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Tanque</td>
+		<td><select id="id_Estado_Físico_Tanque_fase_a_rc" name="id_Estado_Físico Tanque_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Estado_Físico_Tanque_fase_b_rc" name="id_Estado_Físico Tanque_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Estado_Físico_Tanque_fase_c_rc" name="id_Estado_Físico Tanque_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td>Estado Físico Equipo</td>
+		<td><select id="id_Estado_Físico_Tanque_fase_a_tt" name="id_Estado_Físico Tanque_fase_a_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Estado_Físico_Tanque_fase_b_tt" name="id_Estado_Físico Tanque_fase_b_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Estado_Físico_Tanque_fase_c_tt" name="id_Estado_Físico_Tanque_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+    </tr>
 	<tr><!-- FILA 5 PÁGINA 2-->
-		<td class="col-titulo">Limpieza</td>
-		<td><select id="id_Limpieza_fase_a_tt" name="id_Limpieza_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Limpieza_fase_b_tt" name="id_Limpieza_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Limpieza_fase_c_tt" name="id_Limpieza_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Limpieza_ft_dps" name="id_Limpieza_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Gabinete</td>
+		<td><select id="id_Estado_Físico_Gabinete_fase_a_rc" name="id_Estado_Físico_Gabinete_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Conexiones de entrada</td>
+		<td><select id="id_Conexiones_de_entrada_fase_a_rc" name="id_Conexiones_de_entrada_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_de_entrada_fase_b_rc" name="id_Conexiones_de_entrada_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_de_entrada_fase_c_rc" name="id_Conexiones_de_entrada_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td>Conexiones de entrada</td>
+		<td><select id="id_Conexiones_de_entrada_fase_a_tt" name="id_Conexiones_de_entrada_fase_a_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_de_entrada_fase_b_tt" name="id_Conexiones_de_entrada_fase_b_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_de_entrada_fase_c_tt" name="id_Conexiones_de_entrada_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+    </tr>
+	<tr><!-- FILA 6 PÁGINA 2-->
+		<td class="col-titulo">Breakers</td>
+		<td><select id="id_Breakers_rc" name="id_Breakers_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Conexionado de salida</td>
+		<td><select id="id_Conexionado_de_salida_fase_a_rc" name="id_Conexionado_de_salida_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexionado_de_salida_fase_b_rc" name="id_Conexionado_de_salida_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexionado_de_salida_fase_c_rc" name="id_Conexionado_de_salida_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td>Conexionado de salida</td>
+		<td><select id="id_Conexionado_de_salida_fase_a_tt" name="id_Conexionado_de_salida_fase_a_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexionado_de_salida_Tanque_fase_b_tt" name="id_Conexionado_de_salida_fase_b_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexionado_de_salida_Tanque_fase_c_tt" name="id_Conexionado_de_salida_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+    </tr>
+	<tr><!-- FILA 7 PÁGINA 2-->
+		<td class="col-titulo">Display</td>
+		<td><select id="id_Display_rc" name="id_Display_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Conductores puesta tierra</td>
+		<td><select id="id_Conductores_puesta_tierra_fase_a_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_b_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_c_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td>Conexionado de salida</td>
+		<td><select id="id_Conductores_puesta_tierra_fase_a_tt" name="id_Conductores_puesta_tierra_fase_a_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_b_tt" name="id_Conductores_puesta_tierra_fase_b_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_c_tt" name="id_Conductores_puesta_tierra_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+    </tr>
+	<tr><!-- FILA 8 PÁGINA 2-->
+		<td class="col-titulo">Aseo gabinete</td>
+		<td><select id="id_Aseo_gabineterc" name="id_Aseo_gabinete_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Conductores puesta tierra</td>
+		<td><select id="id_Conductores_puesta_tierra_fase_a_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_b_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conductores_puesta_tierra_fase_c_rc" name="id_Conductores_puesta_tierra_fase_a_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td>Conexiones puesta tierra</td>
+		<td><select id="id_Conexiones_puesta_tierra_fase_a_tt" name="id_Conexiones_puesta_tierra_fase_a_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_puesta_tierra_fase_b_tt" name="id_Conexiones_puesta_tierra_fase_b_t" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="id_Conexiones_puesta_tierra_fase_c_tt" name="id_Conexiones_puesta_tierra_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+    </tr>
+	<tr><!-- FILA 8 PÁGINA 2-->
+		<td class="col-titulo">Aseo gabinete</td>
+		<td><select id="id_Aseo_gabineterc" name="id_Aseo_gabinete_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo" colspan="2">observaciones </td>
+		<td colspan="10"><input type="text" id="observaciones_4" name="observaciones_4"></td></tr>
 	</tr>
-	<tr> <!-- FILA 6 PÁGINA 2-->
-		<td class="col-titulo">Cableado</td>
-		<td><select id="id_Cableado_fase_ft_tt" name="id_Cableado_fase_ft" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Cableado_fase_b_tt" name="id_Cableado_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Cableado_fase_c_tt" name="id_Cableado_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Cableado_fase_ft_dps" name="id_Cableado_fase_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-  </tr>
-  <tr>  <!-- FILA 7 PÁGINA 2-->
-		<td class="col-titulo">Puesta a tierra</td>
-		<td><select id="id_Puesta_tierra_fase_a_tt" name="id_Puesta_tierra_fase_a_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Puesta_tierra_fase_b_tt" name="id_Puesta_tierra_fase_b_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Puesta_tierra_fase_c_tt" name="id_Puesta_tierra_fase_c_tt" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="id_Puesta_tierra_ft_dps" name="id_Puesta_tierra_ft_dps" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	<tr><!-- FILA 9 PÁGINA 2-->
+		<td class="col-titulo">Prueba de AC</td>
+		<td><select id="id_Prueba_de_AC_rc" name="id_id_Prueba_de_AC_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
 	</tr>
+	<tr><!-- FILA 10 PÁGINA 2-->
+		<td class="col-titulo">Prueba de DC</td>
+		<td><select id="id_Prueba_de_DC_rc" name="id_id_Prueba_de_DC_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	</tr>
+	<tr><!-- FILA 11 PÁGINA 2-->
+		<td class="col-titulo">No. maniobras</td>
+		<td><select id="id_No_maniobras_rc" name="id_id_No_maniobras_rc" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	</tr>
+
+	
 </table>
 
 <table class="tabla-pdf"><!-- ========== PÁGINA 3: NIVEL 13.8kV — SECCIONADORES ASOCIADOS 34.5 KV -Seccionadores SB11 SST12 OBSERVACIONES:========= -->
-  <h2>3. NIVEL 13.8kV — SECCIONADORES ASOCIADOS 34.5 KV</h2>
+  <h2>3. NIVEL 13.8kV — TRANSFORMADOR --34.5/13.8KV - 5MVA -WEG TR-104 </h2>
 
 	<tr><!-- Encabezado PÁGINA 3-->
-		<th colspan="1" class="titulo-verde">Seccionadores</th>
-		<th colspan="1" class="titulo-verde">SB11</th>
-		<th colspan="1" class="titulo-verde">SST12</th>
-		<th colspan="1" class="titulo-verde">OBSERVACIONES:</th>
+		<th colspan="3" class="titulo-verde">Seccionadores</th>
+		<th colspan="3" class="titulo-verde">Temperaturas</th>
+		<th colspan="2" class="titulo-verde">Color silica Gel</th>
+		<th colspan="2" class="titulo-verde">Conmutador</th>
+		<th colspan="10" class="titulo-verde">Nivel de Aceite</th>
 	</tr>
   
-  <	tr><!-- FILA 1 PÁGINA 3-->
-		<td class="col-titulo">DETALLE</td>
-		<td class="col-titulo">SB11</td>
-		<td class="col-titulo">ST12</td>
-		<td><input type="text" id="observaciones_3" name="observaciones_3" ></td>
+  		<tr><!-- FILA 1 PÁGINA 3-->
+		<td class="col-titulo" colspan="3">Cont Descargas</td>
+		<td class="col-titulo">Aceite</td>
+		<td class="col-titulo">AT</td>
+		<td class="col-titulo">BT</td>
+		<td class="col-titulo">Trafo</td>
+		<td class="col-titulo">Conm.</td>
+		<td class="col-titulo">posición</td>
+		<td class="col-titulo">No. mando</td>
+		<td class="col-titulo" colspan="5">Cuba</td>
+		<td class="col-titulo" colspan="5">OLTC</td>
+		
 	</tr>
 	<tr><!-- FILA 2 PÁGINA 3-->
-		<td class="col-titulo">Estado</td>
-		<td><select id="it_Estado_SB11" name="it_Estado_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Estado_SB12" name="it_Estado_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo" colspan="3">34.5/13.8KV - 5MVA -WEG TR-104</td>
+		<td colspan="1"><input type="text" id="it_Aceite" name="it_Aceite" placeholder="Aceite"></td>
+		<td colspan="1"><input type="text" id="it_At" name="it_At" placeholder="At"></td>
+		<td colspan="1"><input type="text" id="it_Bt" name="it_Bt" placeholder="Bt"></td>
+		<td colspan="1"><input type="text" id="it_Trafo_Bt" name="it_Estado_Bt" placeholder="Trafo"></td>
+		<td colspan="1"><input type="text" id="it_Conm._Bt" name="it_Conm_Bt" placeholder="Conm."></td>
+		<td colspan="1"><input type="text" id="it_posición_Bt" name="it_posición_Bt" placeholder="posición"></td>
+		<td colspan="1"><input type="text" id="it_No_mando_Bt" name="it_ENo. mando_Bt" placeholder="No. mando"></td>
+		<td class="col-titulo" colspan="1">80° C Max</td>
+		<td colspan="6"><input type="text" id="it_80°_C_Max_Bt" name="it_80°_C_Max__Bt" placeholder="---"></td>
+		<td class="col-titulo" colspan="1">80° C Max</td>
+		<td colspan="6"><input type="text" id="it_80°_C_Max_Bt" name="it_80°_C_Max__Bt" placeholder="---"></td>
+	
 	</tr>
+
 	<tr><!-- FILA 3 PÁGINA 3-->
-		<td class="col-titulo">Conectores</td>
-		<td><select id="it_Conectores_SB11" name="it_Conectores_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Conectores_SB12" name="it_Conectores_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		</tr>
+		<td class="col-titulo" colspan="1">FASE R</td>
+		<td class="col-titulo" colspan="1">Alta</td>
+		<td class="col-titulo" colspan="1">Baja</td>
+		<td class="col-titulo" colspan="1">OBSERVACIONES:</td>
+		<td colspan="6"><input type="text" id="it_Observaciones_Bt" name="it_Observaciones_Bt" placeholder="Observaciones"></td>
+		<td class="col-titulo" colspan="1">25° C Max</td>
+		<td colspan="6"><input type="text" id="it_25°_C_Max_Bt" name="it_25°_C_Max__Bt" placeholder="---"></td>
+		<td class="col-titulo" colspan="1">25° C Max</td>
+		<td colspan="6"><input type="text" id="it_25°_C_Max_Bt" name="it_25°_C_Max__Bt" placeholder="---"></td>
+	</tr>
 	<tr><!-- FILA 4 PÁGINA 3-->
-		<td class="col-titulo">Porcelana</td>
-		<td><select id="it_Porcelana_SB11" name="it_Porcelana_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Porcelana_SB12" name="it_Porcelana_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo" colspan="1">FASE S</td>
+		<td class="col-titulo" colspan="1">Alta</td>
+		<td class="col-titulo" colspan="1">Baja</td>
+		<td class="col-titulo" colspan="1">OBSERVACIONES:</td>
+		<td colspan="6"><input type="text" id="it_Observaciones_Bt" name="it_Observaciones_Bt" placeholder="Observaciones"></td>
+		<td class="col-titulo" colspan="1">20° C Max</td>
+		<td colspan="6"><input type="text" id="it_25°_C_Max_Bt" name="it_20°_C_Max__Bt" placeholder="---"></td>
+		<td class="col-titulo" colspan="1">20° C Max</td>
+		<td colspan="6"><input type="text" id="it_25°_C_Max_Bt" name="it_20°_C_Max__Bt" placeholder="---"></td>
 	</tr>
-	<tr><!-- FILA 5 PÁGINA 3-->
-	 	<td class="col-titulo">Mecanismo</td>
-		<td><select id="it_Mecanismo_SB11" name="it_Mecanismo_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Mecanismo_SB12" name="it_Mecanismo_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	<tr><!-- FILA 4 PÁGINA 3-->
+		<td class="col-titulo" colspan="1">FASE T</td>
+		<td class="col-titulo" colspan="1">Alta</td>
+		<td class="col-titulo" colspan="1">Baja</td>
+		<td class="col-titulo" colspan="1">OBSERVACIONES:</td>
+		<td colspan="6"><input type="text" id="it_Observaciones_Bt" name="it_Observaciones_Bt" placeholder="Observaciones"></td>
+	
+		
 	</tr>
-	<tr> <!-- FILA 6 PÁGINA 3-->
-		<td class="col-titulo">Accionamiento</td>
-		<td><select id="it_Accionamiento_SB11" name="it_Accionamiento_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Accionamiento_SB12" name="it_Accionamiento_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
-	<tr>  <!-- FILA 7 PÁGINA 3-->
-		<td class="col-titulo">Gab. De Control</td>
-		<td><select id="it_Gab_Control_SB11" name="it_Gab_Control_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Gab_Control_SB12" name="it_Gab_Control_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
-	<tr>  <!-- FILA 8 PÁGINA 3-->
-		<td class="col-titulo">Aisladores</td>
-		<td><select id="it_Aisladores_SB11" name="it_Aisladores_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Aisladores_SB12" name="it_Aisladores_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
-	<tr>  <!-- FILA 9 PÁGINA 3-->
-		<td class="col-titulo">Puesta a tierra</td>
-		<td><select id="it_Puesta_tierra_SB11" name="it_Puesta_tierra_SB11" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td><select id="it_Puesta_tierras_SB12" name="it_Puesta_tierras_SB12" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
+	
+
+
 </table>
 
-<table class="tabla-pdf"><!-- ========== PÁGINA 4:TRANSFORMADOR 34.5/13.8kV Contador de descargas Estado silica gel Nivel de aceite========= -->
-	<h2>4. NIVEL 13.8kV — NIVEL 34.5KV TRANSFORMADOR DE CORRIENTE INTERRUPTOR DE 34.5KV IT 10  PRESIONES DE SF6 Y MANIOBRAS INTERRUPTOR IT20</h2>
+<table class="tabla-pdf"><!-- ========== PÁGINA 4:NIVEL 13.8 KV========= -->
+	<h2>4. NIVEL 13.8kV</h2>
 	<tr><!-- Encabezado PÁGINA 4-->
-		<th colspan="2" class="titulo-verde">TRANSFORMADOR DE CORRIENTE 34.5 KV</th>
-		<th colspan="6" class="titulo-verde">INTERRUPTOR DE 34.5KV IT 10</th>
-		<th colspan="2" class="titulo-verde">PRESIONES DE SF6 Y MANIOBRAS INTERRUPTOR IT20</th>
+		<th colspan="2" class="titulo-verde">TRANSFORMADOR DE CORRIENTE</th>
+		<th colspan="6" class="titulo-verde">TRANSFORMADORES DE TENSIÓN</th>
+		<th colspan="2" class="titulo-verde">OBSERVACIONES:</th>
 	</tr>
 	<tr><!-- FILA 1 PÁGINA 4-->
-		<td class="col-titulo">Conectores</td>
-		<td><select id="it_conectores tc34"  name="it_conectores_tc34" class="selector ">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Conectores</td>
-		<td><select id="it_conectores i34" name="it_conectores i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Mangueras presión</td>
-		<td><select id="it_Mangueras_presión_i34" name="it_Mangueras_presión_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Breakers</td>
-		<td><select id="it_Breakers_i34" name="it_Breakers_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">presion_sf6_1</td>
-		<td><input type="text" id="presion_sf6_4_i34" name="presion_sf6_4_i34"></td>
+		<td class="col-titulo">ELEMENTO</td>
+		<td class="col-titulo"colspan="3">ESTADO</td>
+		<td class="col-titulo">ELEMENTO</td>
+		<td class="col-titulo"colspan="3">ESTADO</td>
 	</tr>
 	<tr><!-- FILA 2 PÁGINA 4-->
-		<td class="col-titulo">Porcelana</td>
-		<td><select id="it_Porcelana_tc34" name="it_Porcelana_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Conductores eléct</td>
-		<td><select id="it_Conductore_seléctr_i34" name="it_Conductores_eléctr_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Iluminación</td>
-		<td><select id="it_Iluminación_i34" name="it_Iluminación_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Estructura metálica</td>
-		<td><select id="it_Estructura_metálica_i34" name="it_Estructura_metálica_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Presión Leída</td>
-		<td><input type="text" id="it_Presión_Leída_spmi34" name="it_Presión_Leída_spmi34"></td>
+		<td class="col-titulo"></td>
+		<td class="col-titulo">Fase R</td>
+		<td class="col-titulo">Fase S</td>
+		<td class="col-titulo">Fase T</td>
+		<td class="col-titulo"></td>
+		<td class="col-titulo">Fase R</td>
+		<td class="col-titulo">Fase S</td>
+		<td class="col-titulo">Fase T</td>
+		<td class="col-titulo"></td>
+		
 </tr>
 <tr> <!-- FILA 3 PÁGINA 4-->
-		<td class="col-titulo">Caja de agrupamiento</td>
-		<td><select  id="it_Caja_de_agrupamiento_tc34" name="it_Caja_de_agrupamiento_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Porcelana</td>
-		<td><select id="it_Porcelana_i34" name="it_Porcelana_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Puesta a tierra</td>
-		<td><select id="it_Puesta_a_Tierra_i34" name="it_Puesta_a_Tierra_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">DPS</td>
-		<td><select id="it_DPS_i34" name="it_DPS_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Número Maniobras interruptor IT10</td>
-		<td><input type="text" id="it_Número_Maniobras_interruptor_IT10_spmi34 "name="it_Número_Maniobras_interruptor IT10_spmi34"></td>
+		<td class="col-titulo">Conexiones de entrada</td>
+		<td><select  id="it_Conexiones_de_entrada_tc13_fase_a" name="it_Conexiones_de_entrada_tc13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexiones_de_entrada_tc13_fase_b" name="it_Conexiones_de_entrada_tc13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexiones_de_entrada_tc13_fase_c" name="it_Conexiones_de_entrada_tc13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+
+		<td class="col-titulo">Conexiones de entrada</td>
+		<td><select id="Conexiones_de_entrada" name="it_Conexiones_de_entrada_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexiones_de_entrada" name="it_Conexiones_de_entrada_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexiones_de_entrada" name="it_Conexiones_de_entrada_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		
+		<td><input type="text" id="it_OBSERVACIONES_4"name="it_OBSERVACIONES_4"></td>
 	</tr>
-  <tr> <!-- FILA 4 PÁGINA 4-->
-		<td class="col-titulo">Limpieza</td>
-		<td><select id="it_Limpieza_tc34" name="it_Limpieza_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Sistema mecánico</td>
-		<td><select id="it_Sistema_Mecánico_i34" name="it_Sistema_Mecánico_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Gabinete de control</td>
-		<td><select id="it_Gabinete_Control_i34" name="it_Gabinete_Control_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Mandos</td>
-		<td><select id="it_Mandos_i34" name="it_Mandos_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	<tr> <!-- FILA 4 PÁGINA 4-->
+		<td class="col-titulo">Conexionado de salida</td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_a" name="it_Conexionado_de_salida_tc13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_b" name="it_Conexionado_de_salida_tc13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_c" name="it_Conexionado_de_salida_tc13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+
+		<td class="col-titulo">Conexiones de entrada</td>
+		<td><select id="Conexionado_de_salida_tt13_fase_a" name="Conexionado_de_salida_tt13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexionado_de_salida_tt13_fase_b" name="Conexionado_de_salida_tt13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexionado_de_salida_tt13_fase_c" name="Conexionado_de_salida_tt13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		
 	</tr>
-  <tr><!-- FILA 5 PÁGINA 4-->
-		<td class="col-titulo">Cableado</td>
-		<td><select id="it_Cableado_tc34" name="it_Cableado_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Presión de SF6</td>
-		<td><select id="it_Presion_SF6_i34" name="it_PresionSF6_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Borneras</td>
-		<td><select id="it_Borneras_i34" name="it_Borneras_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Calefacción</td>
-		<td><select id="it_Calefaccion_i34" name="it_Calefaccion_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	<tr> <!-- FILA 5 PÁGINA 4-->
+		<td class="col-titulo">Conexionado de salida</td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_a" name="it_Conexionado_de_salida_tc13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_b" name="it_Conexionado_de_salida_tc13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexionado_de_salida_tc13_fase_c" name="it_Conexionado_de_salida_tc13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+
+		<td class="col-titulo">Conexiones de entrada</td>
+		<td><select id="Conexionado_de_salida_tt13_fase_a" name="Conexionado_de_salida_tt13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexionado_de_salida_tt13_fase_b" name="Conexionado_de_salida_tt13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="Conexionado_de_salida_tt13_fase_c" name="Conexionado_de_salida_tt13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		
 	</tr>
-	<tr><!-- FILA 6 PÁGINA 4-->
-		<td class="col-titulo">Puesta a tierra</td>
-		<td><select id="it_Puesta_a_tierra_tc34" name="it_Puesta_tierra_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Manómetros</td>
-		<td><select id="it_Manometros_i34" name="it_Manometros_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Cableado</td>
-		<td><select id="it_Cableado_i34" name="it_Cableado_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Limpieza</td>
-		<td><select id="it_Limpieza_i34" name="it_Limpieza_i34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+	<tr> <!-- FILA 6 PÁGINA 4-->
+		<td class="col-titulo">Conductores puesta tierra</td>
+		<td><select  id="it_Conductores_puesta_tierra_tc13_fase_a" name="it_Conexionado_de_salida_tc13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conductores_puesta_tierra_tc13_fase_b" name="it_Conductores_puesta_tierra_tc13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conductores_puesta_tierra_tc13_fase_c" name="it_Conductores_puesta_tierra_tc13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+
+		<td class="col-titulo">Conductores puesta tierra</td>
+		<td><select id="it_Conexionado_de_salida_tt13_fase_a" name="it_Conductores_puesta_tierra_tt13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="it_Conductores_puesta_tierra_fase_b" name="it_Conductores_puesta_tierra_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="it_Conductores_puesta_tierra_tt13_fase_c" name="it_Conductores_puesta_tierra_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		
 	</tr>
-	<tr> <!-- FILA 7 PÁGINA 4-->
-		<td class="col-titulo" colspan="2">observaciones </td>
-		<td colspan="6"><input type="text" id="observaciones_4" name="observaciones_4"></td></tr>
+	<tr> <!-- FILA 6 PÁGINA 4-->
+		<td class="col-titulo">Conexiones puesta tierra</td>
+		<td><select  id="it_Conexiones_puesta_tierra_tc13_fase_a" name="it_Conexiones_puesta_tierraConexionado_de_salida_tc13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexiones_puesta_tierra_tc13_fase_b" name="it_Conexiones_puesta_tierra_tc13_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select  id="it_Conexiones_puesta_tierra_tc13_fase_c" name="it_Conexiones_puesta_tierra_tc13_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+
+		<td class="col-titulo">Conexiones puesta tierra</td>
+		<td><select id="it_Conexiones_puesta_tierra_tt13_fase_a" name="it_Conexiones_puesta_tierra_tt13_fase_a" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="it_Conexiones_puesta_tierra_fase_b" name="it_Conexiones_puesta_tierra_fase_b" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td><select id="it_Conexiones_puesta_tierra_tt13_fase_c" name="it_Conexiones_puesta_tierra_fase_c" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		
+	</tr>
+
 </table>
 
 <table class="tabla-pdf"><!-- ========== PÁGINA 5:NIVEL 34.5KV TRANSFORMADOR DE CORRIENTE INTERRUPTOR DE 34.5KV IT 10  PRESIONES DE SF6 Y MANIOBRAS INTERRUPTOR IT20========= -->
 	<h2>5. TRANSFORMADOR 34.5/13.8kV </h2>
 	<tr><!-- Encabezado PÁGINA 5-->
-		<th colspan="4" class="titulo-verde">TRANSFORMADOR DE CORRIENTE 34.5 KV</th>
-		<th colspan="3" class="titulo-verde">Contador de descargas</th>
-		<th colspan="2" class="titulo-verde">Estado silica gel</th>
-		<th colspan="2" class="titulo-verde">Nivel de aceite</th>
+		<th colspan="2" class="titulo-verde">RECONECTADOR 13.8KV RC2-22 CIRCUITO ALEJANDRA  </th>
+		<th colspan="2" class="titulo-verde">RECONECTADOR 13.8KV RC2-23 CIRCUITO BORRIQUEROS  </th>
+		<th colspan="2" class="titulo-verde">RECONECTADOR 13.8KV RC2-2</th>
 	</tr>
 	<tr><!-- FILA 1 PÁGINA 5-->
-		<td class="col-titulo">Conductores primarios</td>
-		<td><select id="it_Conductores_primarios_tc34" name="it_Conductores_primarios tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Gabinete de control</td>
-		<td><select id="it_Gabinete_de_control_tc34" name="it_Gabinete_de_control_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">FASES</td>
-		<td class="col-titulo">PRIM.</td>
-		<td class="col-titulo">SECUND.</td>
-		<td class="col-titulo" colspan="2"></td>
-		<td class="col-titulo" colspan="2"></td>
+		<th colspan="1" class="titulo-verde">ELEMENTO  </th>
+		<th colspan="1" class="titulo-verde">ESTADO  </th>
+		<th colspan="1" class="titulo-verde">ELEMENTO  </th>
+		<th colspan="1" class="titulo-verde">ESTADO  </th>
+		<th colspan="1" class="titulo-verde">ELEMENTO  </th>
+		<th colspan="1" class="titulo-verde">ESTADO  </th>
 	</tr>
 	<tr><!-- FILA 2 PÁGINA 5-->
-		<td class="col-titulo">Conectores</td>
-		<td><select id="it_Conectores" name="it_Conectores_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Breaker</td>
-		<td><select id="it_Breaker_tc34" name="it_Breaker_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">FASE R</td>
-		<td class="col-titulo">
-		<input type="text" id="FASE_R_PRIM_CD" name="FASE_R_PRIM_CD" placeholder="FASE R PRIM""></td>
-		<td class="col-titulo"><input type="text" id="FASE_R_SECUND_CD" name="FASE R SECUND_CD" placeholder="FASE R CUND"></td>
-		<td class="col-titulo" colspan="2"><input type="text" id="Estado_silica_gel_tc34" name="Estado_silica_gel_tc34" placeholder="Estado silica gel tc34"></td>
-		<td class="col-titulo" colspan="2">OLTC</td>
+		<td class="col-titulo">Estado Físico Tanque</td>
+		<td><select id="it_Estado_Físico_Tanque_rca" name="Estado_Físico_Tanque_rca" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Tanque</td>
+		<td><select id="it_Estado_Físico_Tanque_rcb" name="Estado_Físico_Tanque_rcb" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Tanque</td>
+		<td><select id="it_Estado_Físico_Tanque_rcz" name="Estado_Físico_Tanque_rcz" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
 	</tr>
 	<tr><!-- FILA 3 PÁGINA 5-->
-		<td class="col-titulo">Bujes primarios</td>
-		<td><select id="it_Bujes_primarios_tc34" name="it_Bujes_primarios_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Bornera</td>
-		<td><select id="it_Bornera_tc34" name="it_Bornera_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">FASE S</td>
-		<td class="col-titulo"><input type="text" id="FASE_S_PRIM_CD_tc34" name="FASE_S_PRIM_CD_tc34" placeholder="FASE S PRIM"></td>
-		<td class="col-titulo">
-		<input type="text" id="FASE_S_SECUND" name="FASE_S_SECUND_CD_tc34" placeholder="FASE_S_SECUND_CD_tc34"></td>
-		<td class="col-titulo" colspan="2">Color actual del GEL</td>
-		<td class="col-titulo">80ºC Max.</td>
-		<td class="col-titulo"><input type="text" id="80ºC_Max_tc34" name="80ºC_Max_tc34" placeholder="80ºC Max.tc34">
-	</td>
+		<td class="col-titulo">Estado Físico Gabinete</td>
+		<td><select id="it_Estado_Físico_Gabinete_rca" name="Estado_Físico_Gabinete_rca" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Gabinete</td>
+		<td><select id="it_Estado_Físico_Gabinete_rcb" name="Estado_Físico_Gabinete_rcb" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
+		<td class="col-titulo">Estado Físico Gabinete</td>
+		<td><select id="it_Estado_Físico_Gabinete_rcz" name="Estado_Físico_Gabinete_rcz" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
 	</tr>
-	<tr><!-- FILA 4 PÁGINA 5-->
-		<td class="col-titulo">Bujes secundarios</td>
-		<td><select id="it_Bujes_secundarios_tc34" name="it_Bujes_secundarios_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Cableado</td>
-		<td><select id="it_Cableado_tc34" name="it_Cableado_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select</td>
-		<td class="col-titulo">FASE T</td>
-		<td class="col-titulo">
-		<input type="text" id="FASE_T_PRIM_CD" name="FASE_T_PRIM_CD" placeholder="FASE T PRIM""></td>
-		<td class="col-titulo">
-		<input type="text" id="FASE_T_SECUND_CD" name="FASE_T_SECUND_CD" placeholder="FASE T SECUND.""></td>
-		<td class="col-titulo" colspan="2">
-		<input type="text" id="Color_actual_del_GEL_tc34" name="Color_actual_del_GEL_tc34" placeholder="Color actual del GEL tc34"></td>
-		<td class="col-titulo">25ºC Max.</td>
-		<td class="col-titulo"><input type="text" id="25ºC Max_tc34" name="25ºC_Max_tc34" placeholder="25ºC Max.tc34"></td>
-	</tr>
-	<tr><!-- FILA 5 PÁGINA 5-->
-		<td class="col-titulo">Silica gel</td>
-		<td><select id="it_Silica_gel_tc34" name="it_Silica_gel_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Iluminación</td>
-		<td><select id="it_Iluminación_tc34" name="it_Iluminación_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo" colspan="3">TEMPERATURAS</td>
-		<td class="col-titulo" colspan="2">Posición conmutador</td>
-		<td	class="col-titulo">20ºC Max.</td>
-		<td class="col-titulo"><input type="text" id="20ºC_Max_tc34" name="20ºC_Max_tc34" placeholder="20ºC Max.tc34"></td>
-    </tr>
-	<tr><!-- FILA 6 PÁGINA 5-->
-		<td class="col-titulo">Termómetro del aceite</td>
-		<td><select id="it_Termómetro_del_aceite_tc34" name="it_Termómetro_del_aceite tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Limpieza</td>
-		<td><select id="it_Limpieza_tc34" name="it_Limpieza_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Aceite</td>
-		<td class="col-titulo">AT</td>
-		<td class="col-titulo">BT</td>
-		<td class="col-titulo"><input type="text" id="it_Posición_conmutador_tc34" name="it_Posición_conmutador_tc34" placeholder="Posición conmutador tc34"></td>
-    
-	</tr>
-	<tr><!-- FILA 7 PÁGINA 5-->
-		<td class="col-titulo">Termómetro devanado</td>
-		<td><select id="it_Termómetro_devanado_tc34" name="it_Termómetro_devanado_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">Mandos</td>
-		<td><select id="it_Mandos_tc34"  name="it_Mandos_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo"><input type="text" id="it_Aceite_tc34" name="it_Aceite_tc34" placeholder="Aceite"></td>
-		<td class="col-titulo"><input type="text" id="it_AT_tc34" name="it_AT_tc34" placeholder="AT"></td>
-		<td class="col-titulo"><input type="text" id="it_BT_tc34" name="it_Bt_tc34" placeholder="Bt"></td>
-	</tr>
-	<tr>
-	<tr><!-- FILA 8 PÁGINA 5-->
-		<td class="col-titulo">Conduct. secundarios</td>
-		<td><select id="it_Conduct_secundarios_tc34" name="it_Conduct_secundarios_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-		<td class="col-titulo">DPS</td>
-		<td><select id="it_DPS_tc34" name="it_DPS_tc34" class="selector">{% include 'subestacion/OPCION_1/opcion_modelo1.html' %}</select></td>
-	</tr>
-	<tr><!-- FILA 9 PÁGINA 5-->
-		<td class="col-titulo" colspan="5">OBSERVACIONES:</td>
-		<td class="col-titulo" colspan="5"><input type="text" id="OBSERVACIONES_5_tc34" name="OBSERVACIONES_5_tc34" placeholder="OBSERVACIONES_5"></td>
-  </tr>
+	
 </table>
 
 <table class="tabla-pdf"><!-- ========== PÁGINA 6:NIVEL 34.5KV TRANSFORMADOR DE CORRIENTE INTERRUPTOR DE 34.5KV IT 10  PRESIONES DE SF6 Y MANIOBRAS INTERRUPTOR IT20========= -->

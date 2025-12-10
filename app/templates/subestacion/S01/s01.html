@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Planilla Registro - Formulario S01</title>
+
+<!-- ======= CSS (mobile-first, paleta institucional EPM/CENS) ======= -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'subestacion/stilo/s30_la_miel.css' %}">
+<link rel="stylesheet" href="{% static 'subestacion/stilo/s30_la_miel_tabla.css' %}">
+</head>
+<body>
+<div class="app">
+
+    {% if message %}
+        <div style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+            {{ message }}
+        </div>
+    {% endif %}
+
+    {% if error_message %}
+        {{ error_message|safe }}
+    {% endif %}
+
+    {% if error_message_html %}
+        {{ error_message_html|safe }}
+    {% endif %}
+
+    {% if mensaje_exito %}
+        {{ mensaje_exito|safe }}
+    {% endif %}
+
+  <!-- ========== PÁGINA 1: Datos generales  ========= -->
+  <form id="planillaForm" autocomplete="off" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+  {% include 'componetes/encabezado/encabezado.html' %}
+
+  <!-- ============================================================================
+       AQUÍ AGREGA TUS CAMPOS DEL FORMULARIO S01
+       ============================================================================
+       INSTRUCCIONES:
+       1. Copia la estructura de tabla que necesites
+       2. Cada campo <input> debe tener un atributo "name" único
+       3. Ese "name" debe coincidir exactamente con las claves del mapeo en views.py
+       4. Ejemplo: <input name="mi_campo_1"> → en views.py: "mi_campo_1": "A10"
+       ============================================================================ -->
+  
+  <!-- EJEMPLO DE TABLA - Reemplaza esto con tus campos reales -->
+  <table class="tabla-pdf">
+    <h2>2. TÍTULO DE LA SECCIÓN S01</h2>
+    <tr>
+      <th colspan="2" class="titulo-verde">DATOS DEL FORMULARIO S01</th>
+    </tr>
+    <tr>
+      <td class="col-titulo">Campo 1:</td>
+      <td><input type="text" name="campo_s01_1" style="width: 100%; padding: 5px;"></td>
+    </tr>
+    <tr>
+      <td class="col-titulo">Campo 2:</td>
+      <td><input type="text" name="campo_s01_2" style="width: 100%; padding: 5px;"></td>
+    </tr>
+    <tr>
+      <td class="col-titulo">Campo de Texto Largo:</td>
+      <td><textarea name="campo_s01_observaciones" rows="3" style="width: 100%; padding: 5px;"></textarea></td>
+    </tr>
+    <!-- 
+      TIPOS DE CAMPOS DISPONIBLES:
+      - Texto: <input type="text" name="nombre_campo">
+      - Número: <input type="number" name="nombre_campo">
+      - Fecha: <input type="date" name="nombre_campo">
+      - Textarea: <textarea name="nombre_campo"></textarea>
+      - Select: <select name="nombre_campo"><option value="opcion1">Opción 1</option></select>
+      
+      IMPORTANTE: El atributo "name" debe coincidir EXACTAMENTE con la clave del diccionario
+      en s01_mapping dentro de views.py
+    -->
+  </table>
+
+  <!-- Puedes agregar más tablas aquí según necesites -->
+  <!--
+  <table class="tabla-pdf">
+    <h2>3. OTRA SECCIÓN</h2>
+    <tr>
+      <th class="titulo-verde">OTROS DATOS</th>
+    </tr>
+    <tr>
+      <td class="col-titulo">Más campos aquí...</td>
+      <td><input type="text" name="otro_campo_s01"></td>
+    </tr>
+  </table>
+  -->
+
+  <!-- ========== SUBIR ARCHIVOS ========= -->
+  <table class="tabla-pdf">
+	<tr>
+		<th colspan="2" class="titulo-verde">SUBIR ARCHIVOS</th>
+	</tr>
+	<tr>
+		<td class="col-titulo" style="width: 30%;">Firma Digital:</td>
+		<td><input type="file" name="firma_digital" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+	<tr>
+		<td class="col-titulo">Foto 1:</td>
+		<td><input type="file" name="foto_1" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+	<tr>
+		<td class="col-titulo">Foto 2:</td>
+		<td><input type="file" name="foto_2" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+	<tr>
+		<td class="col-titulo">Foto 3:</td>
+		<td><input type="file" name="foto_3" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+	<tr>
+		<td class="col-titulo">Foto 4:</td>
+		<td><input type="file" name="foto_4" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+	<tr>
+		<td class="col-titulo">Foto 5:</td>
+		<td><input type="file" name="foto_5" accept="image/*" style="width: 100%; padding: 5px;"></td>
+	</tr>
+  </table>
+
+  <div class="pager"><button type="submit" class="btn">Guardar</button></div>
+  </form>
+
+</body>
+</html>
+
