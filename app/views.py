@@ -1002,18 +1002,24 @@ def procesar_formulario(request, formulario_id):
                                     elif pil_img.mode != 'RGB':
                                         pil_img = pil_img.convert('RGB')
                                 
-                                # Guardar imagen procesada en archivo temporal con extensión correcta
-                                extension = '.png' if formato_original == 'png' else ('.jpg' if formato_original in ('jpeg', 'jpg') else '.gif')
-                                temp_firma = tempfile.NamedTemporaryFile(delete=False, suffix=extension)
-                                temp_firma_path = temp_firma.name
-                                temp_firma.close()
+                                # Guardar imagen procesada en carpeta dentro del proyecto
+                                # Crear carpeta firmas si no existe
+                                firmas_dir = os.path.join(settings.BASE_DIR, 'firmas')
+                                os.makedirs(firmas_dir, exist_ok=True)
                                 
-                                # Guardar imagen procesada
+                                # Generar nombre único para la imagen
+                                extension = '.png' if formato_original == 'png' else ('.jpg' if formato_original in ('jpeg', 'jpg') else '.gif')
+                                timestamp_firma = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+                                nombre_firma = f"firma_{timestamp_firma}{extension}"
+                                temp_firma_path = os.path.join(firmas_dir, nombre_firma)
+                                
+                                # Guardar imagen procesada en la carpeta del proyecto
                                 pil_img.save(temp_firma_path, format=formato_original.upper())
                                 pil_img.close()
                                 
                                 # Verificar que el archivo se guardó correctamente
                                 if os.path.exists(temp_firma_path) and os.path.getsize(temp_firma_path) > 0:
+                                    print(f"📁 Imagen guardada en: {temp_firma_path}")
                                     # Crear objeto Image de openpyxl desde archivo
                                     img = Image(temp_firma_path)
                                     # Ajustar tamaño de la imagen
@@ -1039,16 +1045,9 @@ def procesar_formulario(request, formulario_id):
                     print(f"⚠️ No se subió firma digital")
                 
                 # Guardar Excel primero en archivo temporal (para evitar corrupción)
+                # La imagen debe estar disponible durante el guardado
                 workbook.save(temp_excel_path)
                 workbook.close()  # Cerrar workbook para liberar el archivo en Windows
-                
-                # Limpiar archivo temporal de firma después de guardar el Excel
-                if 'temp_firma_path' in locals() and os.path.exists(temp_firma_path):
-                    try:
-                        time.sleep(0.2)
-                        os.unlink(temp_firma_path)
-                    except:
-                        pass
                 
                 # Esperar un momento para que Windows libere el archivo
                 time.sleep(0.2)
@@ -1058,6 +1057,15 @@ def procesar_formulario(request, formulario_id):
                 os.makedirs(excel_guardados_dir, exist_ok=True)
                 excel_final_path = os.path.join(excel_guardados_dir, new_excel_file_name)
                 shutil.copy2(temp_excel_path, excel_final_path)
+                
+                # Limpiar archivo de firma DESPUÉS de guardar el Excel completamente
+                if 'temp_firma_path' in locals() and temp_firma_path and os.path.exists(temp_firma_path):
+                    try:
+                        time.sleep(0.3)  # Esperar un poco más para asegurar que openpyxl terminó
+                        os.unlink(temp_firma_path)
+                        print(f"🗑️ Archivo de firma temporal eliminado: {temp_firma_path}")
+                    except Exception as e_clean:
+                        print(f"⚠️ No se pudo eliminar archivo de firma temporal: {e_clean}")
                 
                 # Limpiar archivo temporal después de copiar
                 if os.path.exists(temp_excel_path):
