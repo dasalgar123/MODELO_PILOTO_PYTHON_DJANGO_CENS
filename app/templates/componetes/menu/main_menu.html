@@ -1,8 +1,323 @@
 {% extends 'subestacion/S30_LA_MIEL/s30_la_miel_base.html' %}
 
-{% block title %}Menú Principal{% endblock %}
+{% block title %}Menú Principal - Subgerencia de Estaciones y Líneas CENS{% endblock %}
 
 {% block content %}
-    <h2>Bienvenido al Menú Principal</h2>
-    <p>Selecciona una opción del menú de navegación.</p>
+<style>
+    /* Mobile-First: Diseño visual para móvil */
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    .menu-container {
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding: 0;
+        margin: 0;
+        background: var(--bg-light);
+        padding-bottom: 20px;
+    }
+    
+    /* Header móvil con gradiente */
+    .menu-header-mobile {
+        background: linear-gradient(180deg, var(--cens-green) 0%, var(--cens-green-light) 100%);
+        padding: 24px 20px 32px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0 2px 12px rgba(0, 102, 51, 0.2);
+    }
+    
+    .menu-header-mobile h1 {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 700;
+        margin: 0 0 6px 0;
+        font-family: "EPM Rounded", Arial, sans-serif;
+    }
+    
+    .menu-header-mobile p {
+        color: rgba(255, 255, 255, 0.95);
+        font-size: 14px;
+        margin: 0;
+    }
+    
+    /* Info de usuario móvil */
+    .user-info-mobile {
+        background: #fff;
+        margin: -20px 20px 24px;
+        border-radius: 12px;
+        padding: 16px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-top: 3px solid var(--cens-green-light);
+    }
+    
+    .user-info-mobile p {
+        margin: 0;
+        color: var(--epm-gray-dark);
+        font-size: 14px;
+        text-align: center;
+    }
+    
+    .user-info-mobile strong {
+        color: var(--cens-green);
+        font-weight: 600;
+    }
+    
+    /* Grid de tarjetas móvil */
+    .menu-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 0 20px;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* Tarjetas grandes y visuales para móvil */
+    .menu-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 0;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        display: block;
+        color: inherit;
+        cursor: pointer;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+    
+    .menu-card:active {
+        transform: scale(0.98);
+        box-shadow: 0 2px 8px rgba(0, 102, 51, 0.2);
+    }
+    
+    /* Header de tarjeta con color */
+    .menu-card-header {
+        background: linear-gradient(135deg, var(--cens-green) 0%, var(--cens-green-light) 100%);
+        padding: 24px 20px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .menu-card-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: #fff;
+        flex-shrink: 0;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .menu-card-title {
+        flex: 1;
+    }
+    
+    .menu-card-title h3 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        margin: 0 0 4px 0;
+        font-family: "EPM Rounded", Arial, sans-serif;
+    }
+    
+    .menu-card-title .card-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 13px;
+        margin: 0;
+    }
+    
+    /* Contenido de tarjeta */
+    .menu-card-content {
+        padding: 20px;
+    }
+    
+    .menu-card-content p {
+        color: var(--epm-gray-dark);
+        font-size: 14px;
+        margin: 0;
+        line-height: 1.6;
+    }
+    
+    /* Flecha indicadora */
+    .menu-card-arrow {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 20px;
+        margin-left: auto;
+    }
+    
+    /* Efectos hover para desktop */
+    .menu-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 102, 51, 0.25);
+        border-color: var(--cens-green-light);
+    }
+    
+    /* Tablet: 2 columnas */
+    @media (min-width: 600px) {
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 900px;
+            gap: 24px;
+        }
+        
+        .menu-header-mobile {
+            padding: 32px 24px 40px;
+        }
+        
+        .menu-header-mobile h1 {
+            font-size: 32px;
+        }
+        
+        .user-info-mobile {
+            margin: -24px auto 32px;
+            max-width: 600px;
+        }
+        
+        .menu-card-header {
+            padding: 28px 24px;
+        }
+        
+        .menu-card-icon {
+            width: 72px;
+            height: 72px;
+            font-size: 36px;
+        }
+        
+        .menu-card-title h3 {
+            font-size: 22px;
+        }
+    }
+    
+    /* Desktop: 3 columnas */
+    @media (min-width: 900px) {
+        .menu-grid {
+            grid-template-columns: repeat(3, 1fr);
+            max-width: 1200px;
+        }
+        
+        .menu-container {
+            padding-bottom: 40px;
+        }
+        
+        .menu-header-mobile {
+            padding: 40px 24px 48px;
+        }
+        
+        .menu-header-mobile h1 {
+            font-size: 36px;
+        }
+        
+        .user-info-mobile {
+            max-width: 800px;
+        }
+    }
+    
+    /* Pantallas muy pequeñas */
+    @media (max-width: 360px) {
+        .menu-header-mobile {
+            padding: 20px 16px 28px;
+        }
+        
+        .menu-header-mobile h1 {
+            font-size: 22px;
+        }
+        
+        .user-info-mobile {
+            margin: -16px 16px 20px;
+            padding: 14px 16px;
+        }
+        
+        .menu-grid {
+            padding: 0 16px;
+            gap: 16px;
+        }
+        
+        .menu-card-header {
+            padding: 20px 16px;
+        }
+        
+        .menu-card-icon {
+            width: 56px;
+            height: 56px;
+            font-size: 28px;
+        }
+        
+        .menu-card-title h3 {
+            font-size: 18px;
+        }
+        
+        .menu-card-content {
+            padding: 16px;
+        }
+    }
+</style>
+
+{% load static %}
+<div class="menu-container">
+    <div class="menu-header-mobile">
+        <h1>Menú Principal</h1>
+        <p>Sistema de Gestión - Subgerencia de Estaciones y Líneas CENS</p>
+    </div>
+    
+    {% if request.session.inspector_nombre %}
+    <div class="user-info-mobile">
+        <p>Bienvenido, <strong>{{ request.session.inspector_nombre }}</strong></p>
+    </div>
+    {% endif %}
+    
+    <div class="menu-grid">
+        <a href="/app/s30_la_miel/" class="menu-card">
+            <div class="menu-card-header">
+                <div class="menu-card-icon">⚡</div>
+                <div class="menu-card-title">
+                    <h3>S30 - La Miel</h3>
+                    <p class="card-subtitle">Subestación</p>
+                </div>
+                <div class="menu-card-arrow">→</div>
+            </div>
+            <div class="menu-card-content">
+                <p>Planilla de registro para la subestación La Miel</p>
+            </div>
+        </a>
+        
+        <a href="/app/s_xx_zulia/" class="menu-card">
+            <div class="menu-card-header">
+                <div class="menu-card-icon">🔌</div>
+                <div class="menu-card-title">
+                    <h3>S_XX - El Zulia</h3>
+                    <p class="card-subtitle">Subestación</p>
+                </div>
+                <div class="menu-card-arrow">→</div>
+            </div>
+            <div class="menu-card-content">
+                <p>Planilla de registro para la subestación El Zulia</p>
+            </div>
+        </a>
+        
+        <a href="/app/s01/" class="menu-card">
+            <div class="menu-card-header">
+                <div class="menu-card-icon">🏭</div>
+                <div class="menu-card-title">
+                    <h3>S01</h3>
+                    <p class="card-subtitle">Subestación</p>
+                </div>
+                <div class="menu-card-arrow">→</div>
+            </div>
+            <div class="menu-card-content">
+                <p>Planilla de registro para la subestación S01</p>
+            </div>
+        </a>
+    </div>
+</div>
 {% endblock %}

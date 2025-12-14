@@ -52,21 +52,18 @@ la_miel_mapping = {
 
     # PÁGINA 2: TRANSFORMADORES DE TENSIÓN Y DPS 34.5 KV
 
-    "id_tt_fase_r_cdd": "AS10",
-
-    "id_tt_fase_s_cdd": "BD10",
+    "id_tt_fase_r_cdd": "AS10",    "id_tt_fase_s_cdd": "BD10",
 
     "id_tt_fase_t_cdd": "BO10",
 
 
+ "id_conectores_fase_a_tt": "J12",
 
-    "id_conectores_fase_a_tt": "J12",
-
-    "id_conectores_fase_b_tt": "P12",
+ "id_conectores_fase_b_tt": "P12",
 
     "id_conectores_fase_c_tt": "V12",
 
-    "id_conectores_ft_dps": "AN12",
+ "id_conectores_ft_dps": "AN12",
 
 
 
@@ -219,10 +216,8 @@ la_miel_mapping = {
     "it_DPS_i34": "bb30",
 
     "it_Mandos_i34": "bb31",
-
-    "it_Calefaccion_i34": "bb32",
-
-    "it_Limpieza_i34": "bb33",
+"it_Calefaccion_i34": "bb32",
+"it_Limpieza_i34": "bb33",
 
 
 
@@ -831,9 +826,6 @@ la_miel_mapping = {
     # Ver: FORMULARIOS_CONFIG['s30_la_miel']['firma_celda'] = 'K96'
 }
 
-# Mapeo: Encabezado + PÁGINA 2 - FORMULARIO S_XX_ZULIA (copia independiente de S30)
-zulia_mapping = la_miel_mapping.copy()
-
 # ============================================================================
 # CONFIGURACIÓN DE FORMULARIOS
 # ============================================================================
@@ -844,24 +836,23 @@ except ImportError:
     s01_mapping = {}
     S01_CONFIG = {}
 
+try:
+    from app.mapeos.zulia_mapping import zulia_mapping, ZULIA_CONFIG
+except ImportError:
+    zulia_mapping = {}
+    ZULIA_CONFIG = {}
+
 # Diccionario principal que organiza todos los formularios
 FORMULARIOS_CONFIG = {
     's30_la_miel': {
         'mapping': la_miel_mapping,
         'template': 'subestacion/S30_LA_MIEL/s30_la_miel.html',
-        'excel_template': 'C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\PLT_201_MST_032_LA MIEL.xlsx',
+        'excel_template': os.path.join(settings.BASE_DIR, 'app', 'templates', 'plantillas_excel', 'PLT_201_MST_032_LA MIEL.xlsx'),
         'excel_sheet': 'PLT_201_MST_032_ACT',
         'file_prefix': 'S30_LAMIEL',
         'firma_celda': 'K96',
     },
-    's_xx_zulia': {
-        'mapping': zulia_mapping,
-        'template': 'subestacion/S_XX_ZULIA/s_xx_zulia.html',
-        'excel_template': 'C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\PLT_201_MST_022_EL ZULIA.xlsx',
-        'excel_sheet': 'PLT_201_MST_022',
-        'file_prefix': 'S_XX_ZULIA',
-        'firma_celda': 'K96',
-    },
+    's_xx_zulia': ZULIA_CONFIG,
     's01': S01_CONFIG,
 }
 
@@ -955,18 +946,62 @@ def procesar_formulario(request, formulario_id):
                 errores = 0
                 campos_no_guardados = []
                 
+                # Debug: Mostrar campos enviados en POST
+                if formulario_id == 's_xx_zulia':
+                    print(f"\n🔍 DEBUG: Campos en POST ({len(request.POST)} campos):")
+                    for key in sorted(request.POST.keys()):
+                        if 'n345' in key or 'tc13' in key or 'tt13' in key or 'Bt_n345' in key:
+                            print(f"  - {key}: '{request.POST.get(key)}'")
+                
                 for field_name, cell_ref in mapping.items():
-                    if field_name in request.POST:
-                        value = request.POST.get(field_name)
+                    # Obtener valor del POST, o vacío si no está
+                    # IMPORTANTE: Guarda TODOS los campos del mapeo, incluso si no están en POST
+                    value = request.POST.get(field_name, '')
+                    
+                    try:
+                        cell = sheet[cell_ref]
+                        # Intentar escribir en la celda
                         try:
-                            cell = sheet[cell_ref]
                             cell.value = value
                             guardados += 1
-                        except (AttributeError, ValueError, KeyError, Exception) as e:
-                            campos_no_guardados.append(f"{field_name} ({cell_ref}): {type(e).__name__}: {e}")
-                            errores += 1
-                    else:
-                        campos_no_guardados.append(f"{field_name} ({cell_ref}): NO ENVIADO EN POST")
+                        except AttributeError as e:
+                            # Si es un error de MergedCell (read-only), buscar la celda principal
+                            if 'read-only' in str(e).lower() or 'MergedCell' in str(type(cell)):
+                                # Buscar el rango combinado que contiene esta celda
+                                from openpyxl.utils import get_column_letter
+                                cell_col = cell.column
+                                cell_row = cell.row
+                                
+                                # Buscar en los rangos combinados
+                                found = False
+                                for merged_range in sheet.merged_cells.ranges:
+                                    if (merged_range.min_row <= cell_row <= merged_range.max_row and
+                                        merged_range.min_col <= cell_col <= merged_range.max_col):
+                                        # Obtener la celda principal (esquina superior izquierda)
+                                        main_cell_col = get_column_letter(merged_range.min_col)
+                                        main_cell = sheet[f"{main_cell_col}{merged_range.min_row}"]
+                                        main_cell.value = value
+                                        guardados += 1
+                                        found = True
+                                        break
+                                
+                                if not found:
+                                    campos_no_guardados.append(f"{field_name} ({cell_ref}): MergedCell sin rango encontrado")
+                                    errores += 1
+                            else:
+                                raise e
+                    except (AttributeError, ValueError, KeyError, Exception) as e:
+                        error_msg = f"{field_name} ({cell_ref}): {type(e).__name__}: {e}"
+                        campos_no_guardados.append(error_msg)
+                        errores += 1
+                        # Debug detallado para campos problemáticos de Zulia
+                        if formulario_id == 's_xx_zulia' and field_name in ['id_Conexiones_de_entrada_fase_b_tc_n345', 'id_Conexiones_de_entrada_fase_c_tc_n345', 'id_Conexiones_puesta_tierra_fase_a_tc_n345', 'id_Conexiones_puesta_tierra_fase_b_tc_n345', 'id_Conexiones_puesta_tierra_fase_c_tc_n345', 'id_Conexiones_puesta_tierra_fase_a_tt_n345', 'id_Conexiones_puesta_tierra_fase_b_tt_n345']:
+                            print(f"❌ ERROR en {field_name} ({cell_ref}): {e}")
+                            print(f"   Tipo de celda: {type(cell)}")
+                            try:
+                                print(f"   Valor actual de celda: {cell.value}")
+                            except:
+                                print(f"   No se pudo leer valor de celda")
                 
                 print(f"\n[{formulario_id}] Total guardados: {guardados}, Errores: {errores}")
                 if campos_no_guardados:

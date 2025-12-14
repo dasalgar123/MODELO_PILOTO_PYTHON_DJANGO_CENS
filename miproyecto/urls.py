@@ -27,5 +27,13 @@ urlpatterns = [
 # Servir archivos estáticos y media en desarrollo
 if settings.DEBUG:
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+    from django.views.static import serve
+    from django.conf.urls.static import static
+    from pathlib import Path
+    
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # Servir imágenes desde la carpeta imagenes/
+    urlpatterns += [
+        path('imagenes/<path:path>', serve, {'document_root': Path(settings.BASE_DIR) / 'imagenes'}),
+    ]

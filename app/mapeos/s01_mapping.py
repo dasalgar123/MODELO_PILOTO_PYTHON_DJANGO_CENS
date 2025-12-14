@@ -1,6 +1,8 @@
 # ============================================================================
 # MAPEO PARA FORMULARIO S01
 # ============================================================================
+import os
+
 # INSTRUCCIONES PARA COMPLETAR EL MAPEO:
 # 1. En el HTML (s01.html), cada campo tiene un atributo "name"
 # 2. Aquí debes crear una entrada por cada campo con: "name": "celda_excel"
@@ -47,7 +49,7 @@ s01_mapping = {
 S01_CONFIG = {
     'mapping': s01_mapping,
     'template': 'subestacion/S01/s01.html',
-    'excel_template': 'C:\\Users\\ANDRES\\Desktop\\la miel\\app\\templates\\EXEL\\S01_TEMPLATE.xlsx',  # ⚠️ CAMBIAR: Ruta completa a tu Excel S01
+    'excel_template': os.path.join(os.path.dirname(os.path.dirname(__file__)), 'templates', 'plantillas_excel', 'S01_TEMPLATE.xlsx'),  # Ruta relativa a plantillas_excel
     'excel_sheet': 'HOJA1',      # ⚠️ CAMBIAR: Nombre exacto de la hoja Excel
     'file_prefix': 'S01',        # Prefijo para los archivos generados
     'firma_celda': 'K96',        # ⚠️ CAMBIAR: Celda donde se insertará la firma
